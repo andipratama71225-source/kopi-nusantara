@@ -1,1 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kopi Nusantara - Kopi Pilihan Indonesia</title>
 
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #faf7f2;
+    color: #38271d;
+}
+
+header {
+    background: #5a3825;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #e9b98e;
+}
+
+.hero {
+    min-height: 450px;
+    background: #e9dccb;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 60px 8%;
+    gap: 30px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    color: #5a3825;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.hero-image {
+    font-size: 150px;
+}
+
+.btn {
+    display: inline-block;
+    background: #5a3825;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #8b5e3c;
+}
+
+section {
+    padding: 70px 8%;
+}
+
+.judul {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.judul h2 {
+    font-size: 32px;
+    color: #5a3825;
+    margin-bottom: 10px;
+}
+
+.produk {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.kartu {
+    background: white;
+    border: 1px solid #e8ded4;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+.gambar-produk {
+    background: #e9dccb;
+    font-size: 85px;
+    padding: 35px;
+}
+
+.kartu h3 {
+    margin: 18px 0 8px;
+    color: #5a3825;
+}
+
+.kartu p {
+    margin: 8px 15px;
+    color: #75675e;
+}
+
+.harga {
+    display: block;
+    font-weight: bold;
+    color: #8b5e3c;
+    margin: 15px;
+}
+
+.tentang {
+    background: #eee5da;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.tentang p {
+    max-width: 750px;
+    margin: auto;
+}
+
+.galeri {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.galeri div {
+    background: #e9dccb;
+    min-height: 160px;
+    display: grid;
+    place-items: center;
+    font-size: 65px;
+    border-radius: 8px;
+}
+
+.kontak {
+    background: #5a3825;
+    color: white;
+    text-align: center;
+}
+
+.kontak h2 {
+    margin-bottom: 15px;
+}
+
+.kontak p {
+    margin-bottom: 25px;
+}
+
+.kontak .btn {
+    background: #e9dccb;
+    color: #5a3825;
+}
+
+footer {
+    background: #211913;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.keranjang {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 380px;
+    max-width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 200;
+    padding: 25px;
+    transition: .3s;
+    overflow-y: auto;
+    box-shadow: 0 0 20px #0003;
+}
+
+.keranjang.aktif {
+    right: 0;
+}
+
+.keranjang h2 {
+    color: #5a3825;
+    margin-bottom: 20px;
+}
+
+.item-keranjang {
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.item-keranjang button {
+    padding: 4px 9px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.total {
+    font-weight: bold;
+    margin: 25px 0;
+    font-size: 20px;
+}
+
+.tutup {
+    float: right;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 25px;
+}
+
+@media(max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .produk {
+        grid-template-columns: 1fr;
+    }
+
+    .galeri {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">☕ Kopi Nusantara</div>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#produk">Produk</a>
+        <a href="#tentang">Tentang Kami</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#" onclick="bukaKeranjang(); return false;">
+            Keranjang (<span id="jumlah">0</span>)
+        </a>
+    </nav>
+</header>
+
+<section class="hero" id="beranda">
+    <div>
+        <h1>Secangkir Cerita,<br>Sejuta Rasa.</h1>
+
+        <p>
+            Nikmati cita rasa kopi terbaik dari berbagai daerah
+            Indonesia. Kopi pilihan berkualitas untuk menemani
+            setiap aktivitas dan momen istimewa Anda.
+        </p>
+
+        <a href="#produk" class="btn">Lihat Produk</a>
+    </div>
+
+    <div class="hero-image">☕</div>
+</section>
+
+<section id="produk">
+    <div class="judul">
+        <h2>Produk Kopi Kami</h2>
+        <p>Pilihan kopi terbaik dari Nusantara.</p>
+    </div>
+
+    <div class="produk" id="daftarProduk"></div>
+</section>
+
+<section class="tentang" id="tentang">
+    <div class="judul">
+        <h2>Tentang Kopi Nusantara</h2>
+    </div>
+
+    <p>
+        Kopi Nusantara merupakan toko kopi yang menghadirkan
+        berbagai pilihan kopi asli Indonesia. Kami ingin
+        memperkenalkan kekayaan cita rasa kopi dari berbagai
+        daerah, mulai dari Aceh hingga Sulawesi.
+        Kami percaya bahwa setiap biji kopi memiliki cerita
+        dan keunikan tersendiri.
+    </p>
+</section>
+
+<section id="galeri">
+    <div class="judul">
+        <h2>Galeri Kopi</h2>
+        <p>Keindahan dan kenikmatan kopi Indonesia.</p>
+    </div>
+
+    <div class="galeri">
+        <div>☕</div>
+        <div>🫘</div>
+        <div>🌿</div>
+        <div>🫖</div>
+        <div>🤎</div>
+        <div>🌱</div>
+    </div>
+</section>
+
+<section class="kontak" id="kontak">
+    <h2>Hubungi Kami</h2>
+
+    <p>
+        Ingin memesan kopi atau bertanya mengenai produk kami?
+        Hubungi Kopi Nusantara melalui WhatsApp.
+    </p>
+
+    <a class="btn" id="whatsappKontak"
+       href="#" target="_blank">
+        Hubungi WhatsApp
+    </a>
+</section>
+
+<footer>
+    <p>© <span id="tahun"></span> Kopi Nusantara.</p>
+    <p>Cita Rasa Asli Indonesia.</p>
+</footer>
+
+<div class="keranjang" id="keranjang">
+    <button class="tutup" onclick="tutupKeranjang()">×</button>
+
+    <h2>Keranjang Belanja</h2>
+
+    <div id="isiKeranjang"></div>
+
+    <div class="total">
+        Total: <span id="total">Rp0</span>
+    </div>
+
+    <button class="btn" style="width:100%"
+            onclick="pesanWhatsApp()">
+        Pesan Sekarang
+    </button>
+</div>
+
+<script>
+
+// NOMOR WHATSAPP TOKO
+const nomorWhatsApp = "6285796834510";
+
+// DATA PRODUK
+const produk = [
+    {
+        id: 1,
+        nama: "Arabika Gayo",
+        asal: "Aceh",
+        harga: 85000,
+        gambar: "☕",
+        deskripsi: "Aroma floral dengan rasa cokelat dan rempah."
+    },
+    {
+        id: 2,
+        nama: "Toraja Kalosi",
+        asal: "Sulawesi Selatan",
+        harga: 95000,
+        gambar: "🫘",
+        deskripsi: "Rasa kuat dengan aroma kopi yang khas."
+    },
+    {
+        id: 3,
+        nama: "Kintamani",
+        asal: "Bali",
+        harga: 90000,
+        gambar: "🌱",
+        deskripsi: "Rasa segar dengan aroma citrus."
+    }
+];
+
+let keranjang = [];
+
+// FORMAT RUPIAH
+function rupiah(angka) {
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+    }).format(angka);
+}
+
+// MENAMPILKAN PRODUK
+function tampilkanProduk() {
+    const daftar = document.getElementById("daftarProduk");
+
+    daftar.innerHTML = produk.map(item => `
+        <div class="kartu">
+            <div class="gambar-produk">${item.gambar}</div>
+
+            <h3>${item.nama}</h3>
+
+            <p>${item.asal}</p>
+
+            <p>${item.deskripsi}</p>
+
+            <span class="harga">${rupiah(item.harga)}</span>
+
+            <button class="btn" onclick="tambahKeranjang(${item.id})">
+                Tambah Keranjang
+            </button>
+        </div>
+    `).join("");
+}
+
+// TAMBAH PRODUK KE KERANJANG
+function tambahKeranjang(id) {
+    const item = keranjang.find(p => p.id === id);
+
+    if (item) {
+        item.jumlah++;
+    } else {
+        const data = produk.find(p => p.id === id);
+
+        keranjang.push({
+            ...data,
+            jumlah: 1
+        });
+    }
+
+    tampilkanKeranjang();
+    bukaKeranjang();
+}
+
+// TAMPILKAN KERANJANG
+function tampilkanKeranjang() {
+    const isi = document.getElementById("isiKeranjang");
+
+    let total = 0;
+    let jumlah = 0;
+
+    if (keranjang.length === 0) {
+        isi.innerHTML = "<p>Keranjang masih kosong.</p>";
+    } else {
+        isi.innerHTML = keranjang.map(item => {
+            total += item.harga * item.jumlah;
+            jumlah += item.jumlah;
+
+            return `
+                <div class="item-keranjang">
+                    <strong>${item.nama}</strong>
+
+                    <p>${rupiah(item.harga)}</p>
+
+                    <button onclick="ubahJumlah(${item.id}, -1)">−</button>
+
+                    ${item.jumlah}
+
+                    <button onclick="ubahJumlah(${item.id}, 1)">+</button>
+
+                    <p>Subtotal: ${rupiah(item.harga * item.jumlah)}</p>
+                </div>
+            `;
+        }).join("");
+    }
+
+    document.getElementById("jumlah").textContent = jumlah;
+    document.getElementById("total").textContent = rupiah(total);
+}
+
+// UBAH JUMLAH PRODUK
+function ubahJumlah(id, perubahan) {
+    const item = keranjang.find(p => p.id === id);
+
+    if (!item) return;
+
+    item.jumlah += perubahan;
+
+    if (item.jumlah <= 0) {
+        keranjang = keranjang.filter(p => p.id !== id);
+    }
+
+    tampilkanKeranjang();
+}
+
+// BUKA KERANJANG
+function bukaKeranjang() {
+    document.getElementById("keranjang").classList.add("aktif");
+}
+
+// TUTUP KERANJANG
+function tutupKeranjang() {
+    document.getElementById("keranjang").classList.remove("aktif");
+}
+
+// PESAN MELALUI WHATSAPP
+function pesanWhatsApp() {
+    if (keranjang.length === 0) {
+        alert("Keranjang belanja masih kosong!");
+        return;
+    }
+
+    let total = 0;
+
+    let pesan = "Halo Kopi Nusantara, saya ingin memesan:\n\n";
+
+    keranjang.forEach(item => {
+        let subtotal = item.harga * item.jumlah;
+
+        total += subtotal;
+
+        pesan +=
+            item.nama + " x " + item.jumlah +
+            " = " + rupiah(subtotal) + "\n";
+    });
+
+    pesan += "\nTotal Pesanan: " + rupiah(total);
+    pesan += "\n\nMohon informasi cara pembayarannya. Terima kasih.";
+
+    const link =
+        "https://wa.me/" + nomorWhatsApp +
+        "?text=" + encodeURIComponent(pesan);
+
+    window.open(link, "_blank");
+}
+
+// TOMBOL WHATSAPP KONTAK
+document.getElementById("whatsappKontak").href =
+    "https://wa.me/" + nomorWhatsApp +
+    "?text=" + encodeURIComponent(
+        "Halo Kopi Nusantara, saya ingin bertanya tentang produk kopi."
+    );
+
+// TAHUN OTOMATIS
+document.getElementById("tahun").textContent =
+    new Date().getFullYear();
+
+// JALANKAN WEBSITE
+tampilkanProduk();
+tampilkanKeranjang();
+
+</script>
+
+</body>
+</html>
